@@ -4,6 +4,7 @@ import java.time.temporal.Temporal;
 import java.util.List;
 import java.util.Map;
 import java.util.ArrayList; //I added this, so I don't know that it's right...
+import java.util.HashMap;
 
 public class EvaluationService {
 
@@ -126,10 +127,43 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int getScrabbleScore(String string) {
-		// TODO Write an implementation for this method declaration
 		int score = 0;
-		
-		return 0;
+		string = string.toUpperCase();
+		HashMap<Character, Integer> scoreKey = new HashMap<>();
+		scoreKey.put('A', 1);
+		scoreKey.put('E', 1);
+		scoreKey.put('I', 1);
+		scoreKey.put('O', 1);
+		scoreKey.put('U', 1);
+		scoreKey.put('L', 1);
+		scoreKey.put('N', 1);
+		scoreKey.put('R', 1);
+		scoreKey.put('S', 1);
+		scoreKey.put('T', 1);
+		scoreKey.put('D', 2);
+		scoreKey.put('G', 2);
+		scoreKey.put('B', 3);
+		scoreKey.put('C', 3);
+		scoreKey.put('M', 3);
+		scoreKey.put('P', 3);
+		scoreKey.put('F', 4);
+		scoreKey.put('H', 4);
+		scoreKey.put('V', 4);
+		scoreKey.put('W', 4);
+		scoreKey.put('Y', 4);
+		scoreKey.put('K', 5);
+		scoreKey.put('J', 8);
+		scoreKey.put('X', 8);
+		scoreKey.put('Q', 10);
+		scoreKey.put('Z', 10);
+		char[] tiles = new char[string.length()];
+		for (int i = 0; i < string.length(); i++) {
+			tiles[i] = string.charAt(i);
+		}
+		for (int n = 0; n < string.length(); n++) {
+			score += scoreKey.get(tiles[n]);
+		}
+		return score;
 	}
 
 	/**
