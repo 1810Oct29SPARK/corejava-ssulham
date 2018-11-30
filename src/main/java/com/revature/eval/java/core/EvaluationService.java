@@ -3,14 +3,9 @@ package com.revature.eval.java.core;
 import java.time.temporal.Temporal;
 import java.util.List;
 import java.util.Map;
+import java.util.ArrayList; //I added this, so I don't know that it's right...
 
 public class EvaluationService {
-	
-	public static void main(String[] args) {
-		
-		
-		
-	}
 
 	/**
 	 * 1. Without using the StringBuilder or StringBuffer class, write a method that
@@ -90,18 +85,27 @@ public class EvaluationService {
 		}
 
 		public boolean isEquilateral() {
-			// TODO Write an implementation for this method declaration
-			return false;
+			if (sideOne == sideTwo && sideOne == sideThree) {
+				return true;
+			} else {
+				return false;
+			}
 		}
 
 		public boolean isIsosceles() {
-			// TODO Write an implementation for this method declaration
-			return false;
+			if (sideOne == sideTwo || sideOne == sideThree || sideTwo == sideThree) {
+				return true;
+			} else {
+				return false;
+			}
 		}
 
 		public boolean isScalene() {
-			// TODO Write an implementation for this method declaration
-			return false;
+			if (sideOne != sideTwo || sideOne != sideThree || sideTwo != sideThree) {
+				return true;
+			} else {
+				return false;
+			}
 		}
 
 	}
@@ -123,6 +127,8 @@ public class EvaluationService {
 	 */
 	public int getScrabbleScore(String string) {
 		// TODO Write an implementation for this method declaration
+		int score = 0;
+		
 		return 0;
 	}
 
