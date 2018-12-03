@@ -5,9 +5,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.ArrayList; //I added this, so I don't know that it's right...
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class EvaluationService {
-
+	
 	/**
 	 * 1. Without using the StringBuilder or StringBuffer class, write a method that
 	 * reverses a String. Example: reverse("example"); -> "elpmaxe"
@@ -33,7 +34,18 @@ public class EvaluationService {
 	 */
 	public String acronym(String phrase) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		String[] words = phrase.split(" ");
+		char[] capital = new char[words.length];
+		for (int a = 0; a < words.length; a++) {
+			capital[a] = words[a].charAt(0);
+		}
+		char acro = 0;
+		for (int a = 0; a < capital.length; a++) {
+			acro += capital[a];
+		}
+		String acronym = Character.toString(acro);
+		acronym = acronym.toUpperCase();
+		return acronym;
 	}
 
 	/**
@@ -300,7 +312,51 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String toPigLatin(String string) {
-		// TODO Write an implementation for this method declaration
+		//let's try something new...
+		//first let's split up the String into its individual words
+		String sentence = string.toLowerCase();
+		String[] words = sentence.split(" ");
+		for (int a = 0; a < words.length; a++) {
+			char[] firstLetters = new char[words.length];
+			char[] secondLetters = new char[words.length];
+			char[] thirdLetters = new char[words.length];
+			firstLetters[a] = words[a].charAt(0);
+			if (firstLetters[a] != 'a' || firstLetters[a] != 'e' || firstLetters[a] != 'i' || firstLetters[a] != 'o' || firstLetters[a] != 'u') {
+				if (secondLetters[a] != 'a' || secondLetters[a] != 'e' || secondLetters[a] != 'i' || secondLetters[a] != 'o' || secondLetters[a] != 'u') {
+					if (thirdLetters[a] != 'a' || thirdLetters[a] != 'e' || thirdLetters[a] != 'i' || thirdLetters[a] != 'o' || thirdLetters[a] != 'u') {
+						
+					}
+				}
+			}
+		}
+		
+		
+		//make sure that the word contains letters only
+		
+		//set letters to lowercase
+		/*
+		string = string.toLowerCase();
+		char firstLetter = string.charAt(0);
+		char secondLetter = string.charAt(1);
+		char thirdLetter = string.charAt(2);
+		String[] sentence = string.split(" ");
+		//handle words that start with a vowel
+		// if statement
+		if (firstLetter == 'a' || firstLetter == 'e' || firstLetter == 'i' || firstLetter == 'o' || firstLetter == 'u') {
+			string += "ay";
+		} else if (secondLetter == 'a' || secondLetter == 'e' || secondLetter == 'i' || secondLetter == 'o' || secondLetter == 'u') {
+			
+		}
+		*/
+		//handle words that start with a double or triple consonant
+		// else if statement
+		
+		//handle words that start with a single consonant
+		// else  if statement
+		
+		//handle sentences
+		// else if statement
+		
 		return null;
 	}
 
@@ -320,8 +376,23 @@ public class EvaluationService {
 	 * @return
 	 */
 	public boolean isArmstrongNumber(int input) {
-		// TODO Write an implementation for this method declaration
-		return false;
+		String strInput = String.valueOf(input);
+		char[] charInput = new char[strInput.length()];
+		int n = charInput.length;
+		int[] inputArr = new int[charInput.length];
+		double[] dblInput = new double[inputArr.length];
+		double sum = 0;
+		for (int i = 0; i < charInput.length; i++) {
+			inputArr[i] = charInput[i];
+			dblInput[i] = inputArr[i];
+			sum += Math.pow(dblInput[i], n);
+		}
+		Math.round(sum);
+		if (input == sum) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/**
@@ -335,8 +406,32 @@ public class EvaluationService {
 	 * @return
 	 */
 	public List<Long> calculatePrimeFactorsOf(long l) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		ArrayList<Long> prime = new ArrayList<>();
+		ArrayList<Long> notPrime = new ArrayList<>();
+		ArrayList<Long> notNotPrime = new ArrayList<>();
+		ArrayList<Long> notNotNotPrime = new ArrayList<>();
+		for (long i = l - 1; i > 1; i--) {
+			if (l % i == 0) {
+				notPrime.add(i);
+				for (long a = i -1; a > 1; a--) {
+					if (i % a == 0) {
+						notNotPrime.add(a);
+						for (long b = a - 1; b > 1; b--) {
+							if (a % b == 0) {
+								notNotNotPrime.add(b);
+							} else {
+								prime.add(b);
+							}
+						}
+					} else {
+						prime.add(a);
+					}
+				}
+			} else {
+				prime.add(i);
+			}
+		}
+		return prime;
 	}
 
 	/**
@@ -393,7 +488,14 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int calculateNthPrime(int i) {
-		// TODO Write an implementation for this method declaration
+		int m = i * 100;
+		ArrayList<Integer> prime = new ArrayList<>();
+		prime.add(2);
+		for (int a = 3; a < m; a++) {
+			for (int b = a - 1; b > 1; b--) {
+				
+			}
+		}
 		return 0;
 	}
 
@@ -500,7 +602,32 @@ public class EvaluationService {
 	 * @return
 	 */
 	public Temporal getGigasecondDate(Temporal given) {
-		// TODO Write an implementation for this method declaration
+		//Find the number of years and the number of seconds remaining
+		
+		//Find the number of months of the seconds remaining and the number of seconds still remaining
+		
+		//Find the number of days of the seconds still remaining
+		int years = 0;
+		int months = 0;
+		int days = 0;
+		int seconds = 1000000000;
+		int secInYear = 31536000;
+		int secInMonth = 2628000;
+		int secInDay = 86400;
+		while (seconds > secInYear) {
+			seconds = seconds - secInYear;
+			years++;
+		}
+		while (seconds > secInMonth) {
+			seconds = seconds - secInMonth;
+			months++;
+		}
+		while (seconds > secInDay) {
+			seconds = seconds - secInDay;
+			days++;
+		}
+		
+		
 		return null;
 	}
 
@@ -518,8 +645,54 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int getSumOfMultiples(int i, int[] set) {
-		// TODO Write an implementation for this method declaration
-		return 0;
+		//Find the factors of a particular number
+		
+		//Find the multiples of each factor
+		
+		//Make sure to not have repeating numbers added to the list
+		// For example: if the factors happen to be 3 and 4, 12 should only be included once
+		//int count = 0;
+		ArrayList<Integer> multiples = new ArrayList<>();
+		for (int a = i-1; a > 1; a--) {
+			if (i % a == 0) {
+				multiples.add(a);
+				/*
+				set[count] = a;
+				count++;
+				return count;
+				*/
+			}
+		//Now, we should have the number and the factors of that number
+		//Next we need the multiples of the factors and then the sum of those multiples
+		}
+		for (int a = 0; a < set.length; a++) {
+			int b = set[a];
+			while (b < i) {
+				b += b;
+				multiples.add(b);
+				/*
+				set[count] = b;
+				count++;
+				*/
+			}
+		}
+		//Now we should have the number, its factors, and the multiples of the factors
+		// Next we need to get rid of the duplicates, and then we can get the sum of the multiples
+		HashSet<Integer> hashMultiples = new HashSet<>();
+		hashMultiples.addAll(multiples);
+		multiples.clear();
+		multiples.addAll(hashMultiples);
+		//Not sure if we NEED to use the set array, but just in case let's include it here
+		for (int a = 0; a < multiples.size(); a++) {
+			set[a] = multiples.get(a);
+		}
+		//And now let's get the sum
+		int sum = 0;
+		for (int a = 0; a < set.length; a++) {
+			sum += set[a];
+		}
+		
+		return sum;
 	}
 
 	/**
@@ -591,7 +764,8 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int solveWordProblem(String string) {
-		// TODO Write an implementation for this method declaration
+		String[] words = string.split(" ");
+		
 		return 0;
 	}
 
